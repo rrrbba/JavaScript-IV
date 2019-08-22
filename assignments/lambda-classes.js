@@ -6,7 +6,7 @@ class Person{
         this.newLocation = attributes.location;
     }
     speak(){
-      return `Hello my name is ${this.name}, I am from ${this.location}`;
+      return `Hello my name is ${this.newName}, I am from ${this.newLocation}`;
     }
 }
 
@@ -18,11 +18,11 @@ class Instructor extends Person{
         this.newCatchPhrase = instructAttributes.catchPhrase;
         this.newSubject = instructAttributes.subject;
     }
-    demo(){
-        return `Today we are learning about ${this.subject}`;
+    demo(subject){
+        return `Today we are learning about ${subject}`;
     }
     grade(student, subject){
-        return `${student.name} recieves a perfect score on ${subject}`;
+        return `${student.newName} recieves a perfect score on ${subject}`;
     }
 }
 
@@ -34,20 +34,70 @@ class Student extends Person{
         this.newFavSubjects = studentAttributes.favSubjects;
     }
     listsSubjects(){
-        return `${this.favSubjects}`
+        return `${this.newFavSubjects}`
     }
-    PRAssignment(){
-        return `${this.name} has submitted a PR for ${this.subject}`;
+    PRAssignment(subject){
+        return `${this.newName} has submitted a PR for ${subject}`;
     }
-    sprintChallenge(){
-        return `${this.name} has begun sprint challenge on ${this.subject}`;
+    sprintChallenge(subject){
+        return `${this.newName} has begun sprint challenge on ${subject}`;
     }
 }
 
-class ProjectManagers extends Instructors{
+class ProjectManager extends Instructor{
     constructor(pmAttributes){
         super(pmAttributes);
         this.newGradClassName = pmAttributes.gradClassName;
-        this.newFavInstr
+        this.newFavInstructor = pmAttributes.favInstructor;
+    }
+    standUp(channel){
+        return `${this.newName} announces to ${channel}, @channel standy times!`;
+    }
+    debugsCode(student, subject){
+        return `${this.newName} debugs ${student.newName}'s code on ${subject}`;
     }
 }
+
+const john = new Instructor({
+    name: 'John',
+    location: 'New York',
+    age: 28,
+    favLanguage: 'JavaScript',
+    specialty: 'Full-stack',
+    catchPhrase: 'Have a great day'
+
+});
+
+const april = new Student({
+    name: 'April',
+    location: 'California',
+    age: 25,
+    previousBackground: 'sales',
+    className: 'CS132',
+    favSubjects: [
+        'HTML',
+        ' CSS',
+        ' Javascript',
+    ],
+});
+
+const laura = new ProjectManager({
+    name: 'Laura',
+    location: 'Atlanta',
+    age: 32,
+    favLanguage: 'React',
+    specialty: 'Back-end',
+    catchPhrase: 'Good luck',
+    gradClassName: 'CS1',
+    favInstructor: 'John'
+});
+console.log(john.speak());
+console.log(laura.speak());
+console.log(april.speak());
+console.log(john.demo("CSS"));
+console.log(john.grade(april, "Javascript"));
+console.log(april.listsSubjects());
+console.log(april.PRAssignment("Node"));
+console.log(april.sprintChallenge("Advanced Javascript"));
+console.log(laura.standUp("web23"));
+console.log(laura.debugsCode(april, "Computer Science"))
