@@ -68,6 +68,16 @@ const john = new Instructor({
 
 });
 
+const hannah = new Instructor({
+    name: 'Hannah',
+    location: 'Chicago',
+    age: 28,
+    favLanguage: 'JavaScript',
+    specialty: 'Front-end',
+    catchPhrase: 'Helllooo'
+
+});
+
 const april = new Student({
     name: 'April',
     location: 'California',
@@ -81,6 +91,18 @@ const april = new Student({
     ],
 });
 
+const zack = new Student({
+    name: 'Zack',
+    location: 'Holland',
+    age: 22,
+    previousBackground: 'medicine',
+    className: 'CS132',
+    favSubjects: [
+        ' HTML',
+        ' React',
+        ' Node',
+    ],
+});
 const laura = new ProjectManager({
     name: 'Laura',
     location: 'Atlanta',
@@ -91,13 +113,29 @@ const laura = new ProjectManager({
     gradClassName: 'CS1',
     favInstructor: 'John'
 });
+
+const jackson = new ProjectManager({
+    name: 'Jackson',
+    location: 'Florida',
+    age: 40,
+    favLanguage: 'React',
+    specialty: 'Full-stack',
+    catchPhrase: 'Hey there',
+    gradClassName: 'CS2',
+    favInstructor: 'Hannah'
+});
 console.log(john.speak());
 console.log(laura.speak());
 console.log(april.speak());
+console.log(hannah.speak());
+console.log(zack.speak());
 console.log(john.demo("CSS"));
+console.log(hannah.demo("CSS"));
 console.log(john.grade(april, "Javascript"));
 console.log(april.listsSubjects());
+console.log(zack.listsSubjects());
 console.log(april.PRAssignment("Node"));
 console.log(april.sprintChallenge("Advanced Javascript"));
 console.log(laura.standUp("web23"));
+console.log(jackson.standUp("IOS2"));
 console.log(laura.debugsCode(april, "Computer Science"))
